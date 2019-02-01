@@ -1,88 +1,58 @@
-package Arrays;
+package Autoboxing;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+
+class IntClass{
+    private int myValue;
+
+    public IntClass(int myValue) {
+        this.myValue = myValue;
+    }
+
+    public int getMyValue() {
+        return myValue;
+    }
+
+    public void setMyValue(int myValue) {
+        this.myValue = myValue;
+    }
+}
 
 public class Main {
 
-    private static Scanner scanner = new Scanner(System.in);
-    private static GroceryList groceryList = new GroceryList();
-
     public static void main(String[] args) {
-        boolean quit = false;
-        int choice = 0;
-        printInstructions();
-        while(!quit){
-            System.out.println("Enter you choice: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+        //ArrayList<int> intArrayList = new ArrayList<int>(); won't work as int is a primative type
+        ArrayList<IntClass> intClassArrayList = new ArrayList<IntClass>();
+        intClassArrayList.add(new IntClass(54));
 
-            switch(choice) {
-                case 0:
-                    printInstructions();
-                    break;
-                case 1:
-                    groceryList.printList();
-                    break;
-                case 2:
-                    addItem();
-                    break;
-                case 3:
-                    modifyItem();
-                    break;
-                case 4:
-                    removeItem();
-                    break;
-                case 5:
-                    searchForItem();
-                    break;
-                case 6:
-                    quit = true;
-                    break;
-            }
+//        Integer integer = new Integer(69);
+//        Double doubleValue = new Double(19.4);
+
+        ArrayList<Integer> intArrayList = new ArrayList<Integer>();
+
+        for(int i=0; i < 11; i++){
+            intArrayList.add(Integer.valueOf(i));//Autoboxing
         }
-    }
 
-    public static void printInstructions(){
-        System.out.println("\nPress ");
-        System.out.println("\t 0 - To print choice options.");
-        System.out.println("\t 1 - To print the list of grocery items.");
-        System.out.println("\t 2 - To add an item to the list.");
-        System.out.println("\t 3 - To modify an item in the list.");
-        System.out.println("\t 4 - To remove an item from the list.");
-        System.out.println("\t 5 - To search for an item in the list.");
-        System.out.println("\t 6 - To quit the application.");
-    }
-
-    public static void addItem(){
-        System.out.print("Please enter the grocery item: ");
-        groceryList.addItem(scanner.nextLine());
-    }
-
-    public static void modifyItem(){
-        System.out.print("Enter item number: ");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter replacement item: ");
-        String newItem = scanner.nextLine();
-        groceryList.modifyItem(itemNo-1, newItem);
-    }
-
-
-    public static void removeItem(){
-        System.out.print("Enter item number: ");
-        int itemNo = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeItem(itemNo-1);
-    }
-
-    public static void searchForItem(){
-        System.out.print("Item to search for ");
-        String searchItem = scanner.nextLine();
-        if(groceryList.findItem(searchItem) != null){
-            System.out.println("Found " + searchItem + " int our grocery list.");
-        }else{
-            System.out.println(searchItem + " is not in the shopping list.");
+        for(int i=0; i < 11; i++){
+            System.out.println(i + " --> " + intArrayList.get(i).intValue());
         }
-    }
 
+        //There's another short way
+
+        Integer myIntvalue = 56;//This works
+
+        ArrayList<Double> myDoubleValues = new ArrayList<Double>();
+        for(double dbl = 0.0; dbl <= 10.0;dbl+=0.5){
+            myDoubleValues.add(dbl); //Autoboxing
+        }
+
+        for(int i = 0;i < myDoubleValues.size();i++){
+            double value = myDoubleValues.get(i);//Unboxing
+            System.out.println(i + " --> " + value);
+        }
+
+
+
+    }
 }
