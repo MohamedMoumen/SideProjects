@@ -1,31 +1,21 @@
-package LinkedList;
-
-import java.util.ArrayList;
+package Abstraction;
 
 public class Main {
-
     public static void main(String[] args) {
-        Customer customer = new Customer("Tim", 43.53);
-        Customer anotherCustomer ;
-        anotherCustomer = customer;
-        anotherCustomer.setBalance(12.18);
-        System.out.println("Balance for custome " + customer.getName() + " is " + customer.getBalance());
+        Dog dog = new Dog("Faggot");
+        dog.breath();
+        dog.eat();
 
-        ArrayList<Integer> intList = new ArrayList<>();
+        Bird bird =  new Parrot("Idiot");
+        bird.breath();
+        bird.eat();
+        bird.fly();
 
-        intList.add(1);
-        intList.add(3);
-        intList.add(4);
+        Animal animal = new Dog("fagg");
+        animal.breath();
+        animal.eat();
 
-        for(int i=0; i<intList.size();i++){
-            System.out.println(i + ": " + intList.get(i));
-        }
-
-        intList.add(1,2);
-
-        for(int i=0; i<intList.size();i++){
-            System.out.println(i + ": " + intList.get(i));
-        }
+        Penguin penguin = new Penguin("MEep");
+        penguin.fly();
     }
-
 }
